@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>edu.internet2.middleware.security.tomcat6</groupId>
+    <artifactId>tomcat6-dta-ssl</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+
+    <name>Tomcat Delegate To Application JSSE Implementation</name>
+    <description>
+        This is a simple JSSE implementation that requires client cert authentication but delegates 
+        all of the trust verification of the certificate to the application that received the request.
+        
+        PLEASE READ THE ABOVE AGAIN.  Use of this plugin with an application that does not
+        validate the trustworthiness of a provided client certificate will lead to insecure
+        code. 
+    </description>
+    
+    <repositories>
+        <repository>
+            <id>shibboleth.internet2.edu</id>
+            <name>Internet2</name>
+            <url>http://shibboleth.internet2.edu/downloads/maven2</url>
+            <snapshots><enabled>false</enabled></snapshots>
+        </repository>
+    </repositories>
+    
+    <distributionManagement>
+        <repository>
+            <id>release-repo</id>
+            <url>${dist.release.url}</url>
+        </repository>
+    </distributionManagement>
+
+    <dependencies>
+        <!-- Compile dependencies -->
+        
+        <!-- Provided dependencies -->
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>coyote</artifactId>
+            <version>6.0.24</version>
+            <scope>provided</scope>
+        </dependency>
+                
+        <!-- Runtime dependencies -->
+        
+        <!-- Test dependencies -->
+
+    </dependencies>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.5</source>
+                    <target>1.5</target>
+                    <debug>true</debug>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    
+    <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                    </plugin>
+                    <plugin>
+                        <artifactId>maven-assembly-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>make-assembly</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>attached</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>    
+            </build>            
+        </profile>
+    </profiles>
+    
+    <!-- Project Metadata -->
+    <inceptionYear>2010</inceptionYear>
+    
+    <licenses>
+        <license>
+            <name>Apache 2</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    
+    <organization>
+        <name>Internet2</name>
+        <url>http://www.internet2.edu/</url>
+    </organization>
+    
+    <scm>
+        <connection>scm:svn:https://svn.middleware.georgetown.edu/java-security-tools/tomcat6-dta-ssl</connection>
+        <developerConnection>scm:svn:https://svn.middleware.georgetown.edu/java-security-tools/tomcat6-dta-ssl</developerConnection>
+        <tag>HEAD</tag>
+        <url>http://svn.middleware.georgetown.edu/view/?root=shib-extension</url>
+    </scm>
+    
+    <developers>
+        <developer>
+            <id>lajoie</id>
+            <name>Chad La Joie</name>
+            <organization>Itumi</organization>
+            <organizationUrl>http://www.itumi.biz/</organizationUrl>
+            <roles>
+                <role>developer</role>
+                <role>documentation</role>
+            </roles>
+            <timezone>-5</timezone>
+        </developer>
+    </developers>
+    
+</project>
