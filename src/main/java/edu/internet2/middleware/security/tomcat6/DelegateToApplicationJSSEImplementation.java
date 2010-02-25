@@ -21,18 +21,22 @@ import java.security.cert.X509Certificate;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
+import org.apache.juli.logging.Log;
+import org.apache.juli.logging.LogFactory;
 import org.apache.tomcat.util.net.ServerSocketFactory;
 import org.apache.tomcat.util.net.jsse.JSSEImplementation;
 import org.apache.tomcat.util.net.jsse.JSSESocketFactory;
 
 /**
- * A Tomcat JSSE implementation that delegates client certificate verification and validation to the
- * application.
+ * A Tomcat JSSE implementation that delegates client certificate verification and validation to the application.
  * <p>
  * The underlying {@link X509TrustManager} accepts any client/server certificate. Therefore, no
  * <code>truststoreFile</code> parameter is needed.
  */
 public class DelegateToApplicationJSSEImplementation extends JSSEImplementation {
+
+    /** Class logger. */
+    private static Log log = LogFactory.getLog(DelegateToApplicationJSSEImplementation.class);
 
     /** The 'trust any cert' socket factory */
     private NoTrustSocketFactory socketFactory = null;
@@ -45,6 +49,7 @@ public class DelegateToApplicationJSSEImplementation extends JSSEImplementation 
     public DelegateToApplicationJSSEImplementation() throws ClassNotFoundException {
         super();
         socketFactory = new NoTrustSocketFactory();
+        log.debug("Loaded DelegateToApplicationJSSEImplementation");
     }
 
     /** {@inheritDoc} */
@@ -56,7 +61,7 @@ public class DelegateToApplicationJSSEImplementation extends JSSEImplementation 
     public ServerSocketFactory getServerSocketFactory() {
         return socketFactory;
     }
-    
+
     /** {@link JSSESocketFactory} that accepts any certificate presented. */
     public class NoTrustSocketFactory extends JSSESocketFactory {
 
@@ -66,28 +71,31 @@ public class DelegateToApplicationJSSEImplementation extends JSSEImplementation 
         /** Constructor. */
         public NoTrustSocketFactory() {
             super();
-            
+
             X509TrustManager noTrustManager = new X509TrustManager() {
-                
+
                 /** {@inheritDoc} */
                 public void checkClientTrusted(X509Certificate[] certs, String auth) {
+                    log.debug("NoTrustSocketFactory#checkClientTrusted invoked");
                 }
 
                 /** {@inheritDoc} */
                 public void checkServerTrusted(X509Certificate[] certs, String auth) {
+                    log.debug("NoTrustSocketFactory#checkServerTrusted invoked");
                 }
 
                 /** {@inheritDoc} */
                 public X509Certificate[] getAcceptedIssuers() {
+                    log.debug("NoTrustSocketFactory#getAcceptedIssuers invoked");
                     return (new X509Certificate[] {});
                 }
             };
-            
-            trustManagers = new TrustManager[]{noTrustManager};
+
+            trustManagers = new TrustManager[] { noTrustManager };
         }
 
         /** {@inheritDoc} */
-        protected TrustManager[] getTrustManagers(String keystoreType, String algorithm) throws Exception {
+        protected TrustManager[] getTrustManagers(String arg0, String arg1, String arg2) throws Exception {
             return trustManagers;
         }
     }
