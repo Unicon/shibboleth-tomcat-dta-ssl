@@ -1,0 +1,16 @@
+<assembly>
+	<id>bin</id>
+	<formats>
+		<format>zip</format>
+	</formats>
+
+	<dependencySets>
+		<dependencySet>
+			<outputDirectory></outputDirectory>
+			<includes>
+				<include>*:jar:*</include>
+			</includes>
+		</dependencySet>
+	</dependencySets>
+
+</assembly>
