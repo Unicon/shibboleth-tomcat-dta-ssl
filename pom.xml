@@ -7,7 +7,7 @@
     <parent>
         <groupId>net.shibboleth</groupId>
         <artifactId>parent</artifactId>
-        <version>1</version>
+        <version>TRUNK-SNAPSHOT</version>
     </parent>
 
     <groupId>edu.internet2.middleware.security.tomcat6</groupId>
