@@ -1,0 +1,3 @@
+dependencies {
+    provided "org.apache.tomcat:tomcat-coyote:7.0.33"
+}
