@@ -1,0 +1,5 @@
+apply plugin: "java"
+
+dependencies {
+    provided "org.apache.tomcat:coyote:6.0.24"
+}

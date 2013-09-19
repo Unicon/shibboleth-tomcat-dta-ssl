@@ -1,3 +1,9 @@
 .checkstyle
 .classpath
 .project
+.idea
+*.ipr
+*.iml
+build
+classes
+.gradle
