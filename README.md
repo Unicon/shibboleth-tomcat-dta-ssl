@@ -1,4 +1,4 @@
 shibboleth-tomcat-dta-ssl
 =========================
 
-JSSE implementations pluggable into Tomcat servlet container to support Shibboleth IdP custom client cert SSL handling for SOAP-based channels
+Simple JSSE implementations for multiple versions of Tomcat servlet container that require client cert authentication but delegate all of the trust verification of the certificate to the application that received the request.
