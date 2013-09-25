@@ -1,9 +1,9 @@
 /*
- * Licensed to the University Corporation for Advanced Internet Development,
- * Inc. (UCAID) under one or more contributor license agreements.  See the
+ * Licensed to the University Corporation for Advanced Internet Development, 
+ * Inc. (UCAID) under one or more contributor license agreements.  See the 
  * NOTICE file distributed with this work for additional information regarding
- * copyright ownership. The UCAID licenses this file to You under the Apache
- * License, Version 2.0 (the "License"); you may not use this file except in
+ * copyright ownership. The UCAID licenses this file to You under the Apache 
+ * License, Version 2.0 (the "License"); you may not use this file except in 
  * compliance with the License.  You may obtain a copy of the License at
  *
  *    http://www.apache.org/licenses/LICENSE-2.0
@@ -36,8 +36,12 @@ import java.security.cert.X509Certificate;
  * <code>truststoreFile</code> parameter is needed.
  */
 public class DelegateToApplicationJSSEImplementation extends JSSEImplementation {
+    /** {@link Log} for logging. */
     private static Log log = LogFactory.getLog(DelegateToApplicationJSSEImplementation.class);
 
+    /**
+     * Default constructor.
+     */
     public DelegateToApplicationJSSEImplementation() {
         super();
     }
@@ -52,20 +56,31 @@ public class DelegateToApplicationJSSEImplementation extends JSSEImplementation 
         return new NoTrustSocketFactory(endpoint);
     }
 
+    /**
+     * A {@link JSSESocketFactory} that will trust any connection.
+     */
     public class NoTrustSocketFactory extends JSSESocketFactory {
+        /** An array of {@link TrustManager} that holds a 'trust anything' {@link TrustManager}. */
         private TrustManager[] trustManagers;
 
+        /**
+         * Constructor for NoTrustSocketFactory.
+         *
+         * @param endpoint  The endpoint
+         */
         public NoTrustSocketFactory(AbstractEndpoint endpoint) {
             super(endpoint);
 
             X509TrustManager noTrustManager = new X509TrustManager() {
                 @Override
-                public void checkClientTrusted(X509Certificate[] x509Certificates, String s) throws CertificateException {
+                public void checkClientTrusted(X509Certificate[] x509Certificates, String s)
+                        throws CertificateException {
 
                 }
 
                 @Override
-                public void checkServerTrusted(X509Certificate[] x509Certificates, String s) throws CertificateException {
+                public void checkServerTrusted(X509Certificate[] x509Certificates, String s)
+                        throws CertificateException {
 
                 }
 

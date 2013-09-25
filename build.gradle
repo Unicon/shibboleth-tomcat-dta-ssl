@@ -16,12 +16,17 @@ configure(allprojects) {
 subprojects {
     apply plugin: "java"
     apply plugin: "maven"
+    apply plugin: "checkstyle"
 
     group = "edu.internet2.middleware.security.tomcat"
     version = "1.1-SNAPSHOT"
 
     repositories {
         mavenCentral()
+    }
+
+    checkstyle {
+        configFile = file("${project(":").projectDir}/config/checkstyle/checkstyle.xml")
     }
 }
 
