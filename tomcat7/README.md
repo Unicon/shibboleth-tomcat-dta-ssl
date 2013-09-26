@@ -18,7 +18,7 @@ lead to insecure code.
 
 ## Usage
 
-1. Download or compile the `tomcat7-{version}.jar` file.
+1. Download or compile the `tomcat7-{version}.jar` file. Find the files at [github](https://github.com/Unicon/shibboleth-tomcat-dta-ssl/releases).
 2. Place the file in the `{TOMCAT_HOME}/lib` directory.
 3. Configure the connector for SOAP connections to use the custom implementation. You should add the following to
 `{TOMCAT_HOME}/conf/server.xml`. **DO NOT USE FOR YOUR BROWSER CLIENT CONNECTOR!**
