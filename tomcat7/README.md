@@ -23,14 +23,16 @@ lead to insecure code.
 3. Configure the connector for SOAP connections to use the custom implementation. You should add the following to
 `{TOMCAT_HOME}/conf/server.xml`. **DO NOT USE FOR YOUR BROWSER CLIENT CONNECTOR!**
 
-        <Connector port="8443"
-            protocol="org.apache.coyote.http11.Http11Protocol"
-            sslImplementationName="edu.internet2.middleware.security.tomcat7.DelegateToApplicationJSSEImplementation"
-            scheme="https"
-            SSLEnabled="true"
-            clientAuth="want"
-            keystoreFile="{IDP_HOME}/credentials/idp.jks"
-            keystorePass="{PASSWORD}" />
+```xml
+<Connector port="8443"
+        protocol="org.apache.coyote.http11.Http11Protocol"
+        sslImplementationName="edu.internet2.middleware.security.tomcat7.DelegateToApplicationJSSEImplementation"
+        scheme="https"
+        SSLEnabled="true"
+        clientAuth="want"
+        keystoreFile="{IDP_HOME}/credentials/idp.jks"
+        keystorePass="{PASSWORD}" />
+```
 
 4. Replace `{IDP_HOME}` with the IdP home directory entered during installation
 5. Replace `{PASSWORD}` with the password for the IdP key entered during installation.
