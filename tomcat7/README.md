@@ -3,6 +3,8 @@
 See [Preparing Apache Tomcat for the Shibboleth Identity Provider](https://wiki.shibboleth.net/confluence/display/SHIB2/IdPApacheTomcatPrepare)
 for more information.
 
+Note: This has been tested and works with Tomcat 8 as well
+
 ## Introduction
 
 Shibboleth IdPs and SP may communicate directly, as opposed to sending messages via the user's browser, during certain
