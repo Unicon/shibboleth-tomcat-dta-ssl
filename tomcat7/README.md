@@ -20,11 +20,10 @@ lead to insecure code.
 
 ## Usage
 
-* Download or compile the `tomcat7-{version}.jar` file. Find the files at [github](https://github.com/Unicon/shibboleth-tomcat-dta-ssl/releases).
-* Place the file in the `{TOMCAT_HOME}/lib` directory.
-* Configure the connector for SOAP connections to use the custom implementation. You should add the following to
+1. Download or compile the `tomcat7-{version}.jar` file. Find the files at [github](https://github.com/Unicon/shibboleth-tomcat-dta-ssl/releases).
+1. Place the file in the `{TOMCAT_HOME}/lib` directory.
+1. Configure the connector for SOAP connections to use the custom implementation. You should add the following to
 `{TOMCAT_HOME}/conf/server.xml`. **DO NOT USE FOR YOUR BROWSER CLIENT CONNECTOR!**
-
 ```xml
 <Connector port="8443"
         protocol="org.apache.coyote.http11.Http11Protocol"
@@ -36,5 +35,5 @@ lead to insecure code.
         keystorePass="{PASSWORD}" />
 ```
 
-* Replace `{IDP_HOME}` with the IdP home directory entered during installation
-* Replace `{PASSWORD}` with the password for the IdP key entered during installation.
+1. Replace `{IDP_HOME}` with the IdP home directory entered during installation
+1. Replace `{PASSWORD}` with the password for the IdP key entered during installation.
