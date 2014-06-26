@@ -1,2 +1,1 @@
-include "tomcat6"
 include "tomcat7"
