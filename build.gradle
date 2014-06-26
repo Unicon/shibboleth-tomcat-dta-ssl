@@ -19,7 +19,7 @@ subprojects {
     apply plugin: "checkstyle"
 
     group = "edu.internet2.middleware.security.tomcat"
-    version = "1.1-SNAPSHOT"
+    version = "1.1"
 
     repositories {
         mavenCentral()
